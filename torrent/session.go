@@ -219,7 +219,9 @@ func NewSession(cfg Config) (*Session, error) {
 		panic(err)
 	}
 	ext.Set(61) // Fast Extension (BEP 6)
-	ext.Set(43) // Extension Protocol (BEP 10)
+	if cfg.ExtensionProtocolEnabled {
+		ext.Set(43) // Extension Protocol (BEP 10)
+	}
 	if cfg.DHTEnabled {
 		ext.Set(63) // DHT Protocol (BEP 5)
 		c.dhtPeerRequests = make(map[*torrent]struct{})
