@@ -199,6 +199,8 @@ type Config struct {
 	CustomLogHandler log.Handler
 	// Enable debugging
 	Debug bool
+	// Enable extension protocol (BEP 10)
+	ExtensionProtocolEnabled bool
 }
 
 // DefaultConfig for Session. Do not pass zero value Config to NewSession. Copy this struct and modify instead.
@@ -276,6 +278,7 @@ var DefaultConfig = Config{
 	PieceReadTimeout:             30 * time.Second,
 	MaxPeerAddresses:             2000,
 	AllowedFastSet:               10,
+	ExtensionProtocolEnabled:     true,
 
 	// IO
 	ReadCacheBlockSize: 128 << 10,
